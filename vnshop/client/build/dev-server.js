@@ -25,13 +25,15 @@ const proxyTable = config.dev.proxyTable
 
 const app = express()
 const compiler = webpack(webpackConfig)
-
+    //先引入外部的json数据
 var goodsData = require('../mock/mock-goods.json');
+// 声明路由
 var router = express.Router();
+// 写一个goods接口，让用户使用数据的时候，直接请求
 router.get("/goods", function(req, res, next) {
-    res.json(goodsData);
+    res.json(goodsData); //输出数据
 })
-app.use(router);
+app.use(router); //使用路由
 
 const devMiddleware = require('webpack-dev-middleware')(compiler, {
     publicPath: webpackConfig.output.publicPath,

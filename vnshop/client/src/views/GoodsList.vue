@@ -37,7 +37,8 @@
                        <ul>
                             <li v-for="(item,index) in goods" :key="index">
                                 <div class="pic">
-                                    <a href="#"><img :src="'/static/img/' +item.productImage"></a>
+                                    <!-- <a href="#"><img :src="'/static/img/' +item.productImage"></a> -->
+                                    <a href="#"><img v-lazy="'/static/img/' +item.productImage"></a>
                                 </div>
                                 <div class="main">
                                     <div class="name">{{item.productName}}</div>
@@ -84,7 +85,7 @@
                                 </div>
                             </li> -->
                         </ul>
- </div>
+                     </div>
                 </div>
             </div>
         </div>
@@ -96,13 +97,16 @@
   </div>
 </template>
 <script>
+      // 导入需要的子组件
     import NavHeader from '@/components/Header'
     import NavFooter from '@/components/Footer'
     import NavBread from '@/components/NavBread'
     import axios from 'axios'
     // import '../../static/css/base.css'
     // import '../../static/css/product.css'
+
     export default{
+      // 挂载到export default
         components:{
             NavHeader,
             NavFooter,
